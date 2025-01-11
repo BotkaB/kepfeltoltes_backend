@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Kepek;
 
-class Kepek extends Controller
+class KepekController extends Controller
 {
+
+    public function index()
+    {
+        $files = Kepek::latest()->get();
+        return $files;
+    }
+
+
     public function store(Request $request)
     {
     // a kérés validálásához a validate függvényt használjuk. Beállítjuk az elfogadott képformátumokat
